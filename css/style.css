@@ -2,7 +2,7 @@ body {
     background-color: #000;
     color: #fff;
     font-family: "Lucida Console";
-    font-size: 12px;
+    font-size: 90%;
 }
 p#clock{
     text-align: center;
