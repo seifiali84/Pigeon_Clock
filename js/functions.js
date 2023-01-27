@@ -1,11 +1,11 @@
 console.log("functions.js started.");
-var myVar = setInterval(function () {
-    myTimer();
-}, 1000);
-function myTimer() {
-    document.getElementById("clock").innerText = GetClock();
-    document.getElementById("date").innerText = GetDate();
-}
+//var myVar = setInterval(function () {
+//    myTimer();
+//}, 1000);
+//function myTimer() {
+  //  document.getElementById("clock").innerText = GetClock();
+    //document.getElementById("date").innerText = GetDate();
+//}
 console.log("functions.js ended.");
 
 

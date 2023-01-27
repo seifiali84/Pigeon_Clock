@@ -4,12 +4,41 @@ body {
     font-family: "Lucida Console";
     font-size: 90%;
 }
-p#clock{
+#clock{
+    position: relative;
     text-align: center;
     margin-top: 20%;
+    border: 1px solid #73AD21;
+    width: 40%;
+    height: 10vw;
+    margin-left: 30%;
 }
-p#date{
+#date{
+    width: 20%;
+    border: 1px solid #73AD21;
     text-align: left;
     margin-top: 5%;
     margin-left: 2%;
 }
+#hour {
+    position: absolute;
+    width: 30%;
+    height: 10vw;
+    background-color: #EAEAEA;
+    border: 1px solid #73AD21;
+    margin-right: 3%;
+}
+#min{
+    position: absolute;
+    width: 30%;
+    height: 10vw;
+    background-color: #EAEAEA;
+    border: 1px solid #73AD21;
+    margin-left: 33%;
+    margin-right: 3%;
+}
+#sec{
+    position: relative;
+}
+/* dark Gold  : #AF8300 */
+/* dark white : #EAEAEA */
