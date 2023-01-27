@@ -4,41 +4,83 @@ body {
     font-family: "Lucida Console";
     font-size: 90%;
 }
-#clock{
+
+#clock {
+
     position: relative;
     text-align: center;
     margin-top: 20%;
-    border: 1px solid #73AD21;
-    width: 40%;
+    width: 52vw;
     height: 10vw;
-    margin-left: 30%;
+    margin-left: 25%;
+    border: 1px solid #73AD21;
 }
-#date{
+
+#date {
+
     width: 20%;
     border: 1px solid #73AD21;
     text-align: left;
     margin-top: 5%;
     margin-left: 2%;
 }
+
 #hour {
+    color: #000;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 10vh;
+    text-align: center;
     position: absolute;
-    width: 30%;
+    width: 15vw;
+    height: 10vw;
+    background-color: #EAEAEA;
+}
+
+#split1 {
+    position: absolute;
+    height: 10vw;
+    width: 1.5vw;
+    font-size: 10vh;
+    margin-left: 14vw;
+    border: 1px solid #73AD21;
+}
+
+#min {
+    color: #000;
+    font-weight: bolder;
+    font-size: 10vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    position: absolute;
+    width: 15vw;
     height: 10vw;
     background-color: #EAEAEA;
     border: 1px solid #73AD21;
-    margin-right: 3%;
+    margin-left: 18.4vw;
 }
-#min{
+
+#split2 {
     position: absolute;
-    width: 30%;
+    width: 1.5vw;
     height: 10vw;
-    background-color: #EAEAEA;
+    font-size: 10vh;
+    margin-left: 32.3vw;
     border: 1px solid #73AD21;
-    margin-left: 33%;
-    margin-right: 3%;
 }
-#sec{
-    position: relative;
+
+#sec {
+    font-weight: bolder;
+    font-size: 10vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    position: absolute;
+    width: 15vw;
+    height: 10vW;
+    background-image: linear-gradient(to right, #AF8300, #c79e22, #AF8300);
+    border: 1px solid #73AD21;
+    margin-left: 37vw;
 }
+
 /* dark Gold  : #AF8300 */
 /* dark white : #EAEAEA */
