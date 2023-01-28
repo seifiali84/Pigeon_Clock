@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="res/ico/Pigeon.ico">
+    <script src="js/jquery-3.6.3.min.js"></script>
     <script src="js/functions.js"></script>
     <title>Pigeon Time</title>
 </head>
@@ -17,12 +18,14 @@
         <div class="slash">/</div>
         <div id="day"></div>
     </div>
+    <h1 class="off">P<span>CLOCK</span></h1>
     <div id="clock">
-        <div id="hour">24</div>
-        <div id="split1">:</div>
-        <div id="min">60</div>
-        <div id="split2">:</div>
-        <div id="sec">60</div>
+        <ul id="s">
+        </ul>
+        <ul id="m">
+        </ul>
+        <ul id="h">
+        </ul>
     </div>
 </body>
 </html>
