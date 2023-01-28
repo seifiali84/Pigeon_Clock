@@ -42,6 +42,15 @@ function GetClock(){
     sec = sec - min * 60;
     min = min - hour * 60;
     hour = hour - day * 24;
+    if(hour < 10){
+        hour = "0" + hour;
+    }
+    if(min < 10){
+        min = "0" + min;
+    }
+    if(sec < 10){
+        sec = "0" + sec;
+    }
     return hour + ":" + min + ":" + sec;
 }
 console.log(GetClock());
@@ -54,6 +63,21 @@ function GetDate(){
     var year = Math.floor(month / 12);
     day = day - month * 30;
     month = month - year * 12;
+    if(year < 10){
+        year = "000" + year;
+    }
+    else if(year < 100){
+        year = "00" + year;
+    }
+    else if(year < 1000){
+        year = "0" + year;
+    }
+    if(month < 10){
+        month = "0" + month;
+    }
+    if(day < 10){
+        day = "0" + day;
+    } 
     return year + "/" + month + "/" + day;
 }
 console.log(GetDate());
