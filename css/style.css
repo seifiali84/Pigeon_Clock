@@ -143,9 +143,10 @@ li {
     height: 20px;
     line-height: 20px;
     text-align: right;
-    opacity: 0.2;
+    opacity: 0.3;
     transform-origin: 50%;
-    transition: all .25s linear .25s
+    transition: all .25s linear .25s;
+    font-weight: bolder;
 }
 
 li::after {}
