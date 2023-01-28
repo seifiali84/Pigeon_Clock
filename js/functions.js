@@ -1,12 +1,11 @@
-console.log("functions.js started.");
+
 var myVar = setInterval(function () {
     myTimer();
 }, 1000);
 function myTimer() {
-    document.getElementById("clock").innerText = GetClock();
     document.getElementById("date").innerText = GetDate();
 }
-console.log("functions.js ended.");
+
 
 
 // get unix time :
@@ -14,7 +13,7 @@ function getCurrentUnixTimestamp() {
     return Math.floor(Date.now() / 1000);
 }
 const first_unix = 1674678600; //  2023 / 1 / 26   00:00:00
-function GetPassedSec(){
+function GetPassedSec() {
     return getCurrentUnixTimestamp() - first_unix;
 }
 function ConvertSecToDate() // its just a test function
@@ -30,31 +29,12 @@ function ConvertSecToDate() // its just a test function
     hour = hour - day * 24;
     day = day - month * 30;
     month = month - year * 12;
-    return "years : " + year + " | months : " + month + " | days : " + day + " | hours : " + hour + " | minutes : " + min + " | seconds : " + sec ;
+    return "years : " + year + " | months : " + month + " | days : " + day + " | hours : " + hour + " | minutes : " + min + " | seconds : " + sec;
 }
-console.log(ConvertSecToDate());
 
-function GetClock(){
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    sec = sec - min * 60;
-    min = min - hour * 60;
-    hour = hour - day * 24;
-    if(hour < 10){
-        hour = "0" + hour;
-    }
-    if(min < 10){
-        min = "0" + min;
-    }
-    if(sec < 10){
-        sec = "0" + sec;
-    }
-    return hour + ":" + min + ":" + sec;
-}
-console.log(GetClock());
-function GetDate(){
+
+
+function GetDate() {
     var sec = GetPassedSec();
     var min = Math.floor(sec / 60);
     var hour = Math.floor(min / 60);
@@ -80,4 +60,87 @@ function GetDate(){
     } 
     return year + "/" + month + "/" + day;
 }
-console.log(GetDate());
+    function draw() {
+        for (i = 0; i < 60; i++) {
+            D = (i < 10) ? '0' + i : i;
+            $('#s').append('<li data-item=' + D + '>' + D + '</li>');
+        }
+        for (i = 0; i < 60; i++) {
+            D = (i < 10) ? '0' + i : i;
+            $('#m').append('<li data-item=' + D + '>' + D + '</li>');
+        }
+        for (i = 0; i < 24; i++) {
+            D = (i < 10) ? '0' + i : i;
+            $('#h').append('<li data-item=' + D + '>' + D + '</li>');
+        }
+    }
+    function place() {
+        hdeg = 15;
+        msdeg = 6;
+        $('#s li').each(function (index) {
+            $(this).css({ transform: 'rotateZ(' + msdeg * index + 'deg) translateX(' + parseInt(200) + 'px)' });
+        });
+        $('#m li').each(function (index) {
+            $(this).css({ transform: 'rotateZ(' + msdeg * index + 'deg) translateX(' + parseInt(170) + 'px)' });
+        });
+        $('#h li').each(function (index) {
+            $(this).css({ transform: 'rotateZ(' + hdeg * index + 'deg) translateX(' + parseInt(140) + 'px)' });
+        });
+    }
+    //TIMER
+    function sec(ts, timer) {
+        TS = ts % 60;
+        if (ts == 0 && timer) min(0, timer);
+        deg = 360 / 60 * ts;
+        $('#s li').removeClass('active');
+        $('#s li').eq(TS).addClass('active');
+        $('#s').css({ transform: 'rotateZ(-' + deg + 'deg)' });
+        ts++;
+        if (timer) setTimeout(function () { sec(ts, timer) }, TIME * 1000);
+    }
+    function min(tm, timer) {
+        TM = tm % 60;
+        if (tm == 0 && timer) hour(0, timer);
+        deg = 360 / 60 * tm;
+        $('#m li').removeClass('active');
+        $('#m li').eq(TM).addClass('active');
+        $('#m').css({ transform: 'rotateZ(-' + deg + 'deg)' });
+        tm++;
+        if (timer) setTimeout(function () { min(tm, timer) }, TIME * 60000);
+    }
+    function hour(th, timer) {
+        TH = th % 24;
+        deg = 360 / 24 * th;
+        $('#h li').removeClass('active');
+        $('#h li').eq(TH).addClass('active');
+        $('#h').css({ transform: 'rotateZ(-' + deg + 'deg)' });
+        th++;
+        if (timer) setTimeout(function () { hour(th, timer) }, TIME * 3600000);
+    }
+    //CLOCK
+    function clock() {
+        d = new Date();
+        H = d.getHours();
+        M = d.getMinutes();
+        S = d.getSeconds();
+        hour(H, 0);
+        min(M, 0);
+        sec(S, 0);
+        setTimeout(function () { clock(); }, 1000);
+    }
+
+    $(document).ready(function () {
+        draw();
+        place();
+        //TIMER
+        /*
+        TIME = 1;
+        sec(0,1);
+        */
+        //CLOCK
+        clock();
+        //LIGHT
+        $("h1").click(function () {
+            $(this).toggleClass('off');
+        });
+    });
