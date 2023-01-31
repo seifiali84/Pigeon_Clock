@@ -60,6 +60,66 @@ function GetDate() {
     } 
     return year + "/" + month + "/" + day;
 }
+function GetYear(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(year < 10){
+        year = "000" + year;
+    }
+    else if(year < 100){
+        year = "00" + year;
+    }
+    else if(year < 1000){
+        year = "0" + year;
+    }
+    return year;
+}
+function GetMonth(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(month < 10){
+        month = "0" + month;
+    }
+    return month;
+}
+function GetDay(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(year < 10){
+        year = "000" + year;
+    }
+    else if(year < 100){
+        year = "00" + year;
+    }
+    else if(year < 1000){
+        year = "0" + year;
+    }
+    if(month < 10){
+        month = "0" + month;
+    }
+    if(day < 10){
+        day = "0" + day;
+    } 
+    return day;
+}
     function draw() {
         for (i = 0; i < 60; i++) {
             D = (i < 10) ? '0' + i : i;
@@ -144,3 +204,6 @@ function GetDate() {
             $(this).toggleClass('off');
         });
     });
+function DateCounter(){
+
+}
