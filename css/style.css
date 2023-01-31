@@ -16,6 +16,7 @@
 }
 
 #year, #month , #day {
+    font-weight: bolder;
     background-image: linear-gradient(60deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.5) 45%, rgba(255, 255, 255, .25) 55%, rgba(255, 255, 255, .35) 55.5%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0.2) 68%, rgba(255, 255, 255, 0.1) 72%, rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%), radial-gradient(circle at 50% 10%, rgba(180, 180, 180, 1) 0%, rgba(140, 140, 140, 1) 80%);
     border-radius: 5px;
     color : #424242;
