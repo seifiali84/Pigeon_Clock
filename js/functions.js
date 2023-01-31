@@ -1,10 +1,10 @@
 
-var myVar = setInterval(function () {
-    myTimer();
-}, 1000);
-function myTimer() {
-    document.getElementById("date").innerText = GetDate();
-}
+// var myVar = setInterval(function () {
+//     myTimer();
+// }, 1000);
+// function myTimer() {
+//     document.getElementById("date").innerText = GetDate();
+// }
 
 
 
