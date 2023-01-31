@@ -1,215 +1,55 @@
+console.log(document.getElementById("canves"))
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
-var myVar = setInterval(function () {
-    myTimer();
-}, 1000);
-function myTimer() {
-    DateCounter();
+ctx.strokeStyle = '#00ffff';
+ctx.lineWidth = 17;
+ctx.shadowBlur = 15;
+ctx.shadowColor = '#00ffff'
+
+function degToRad(degree) {
+    var factor = Math.PI / 180;
+    return degree * factor;
 }
 
+function renderTime() {
+    var now = new Date();
+    var today = now.toDateString();
+    var time = now.toLocaleTimeString();
+    var hrs = now.getHours();
+    var min = now.getMinutes();
+    var sec = now.getSeconds();
+    var mil = now.getMilliseconds();
+    var smoothsec = sec + (mil / 1000);
+    var smoothmin = min + (smoothsec / 60);
 
+    //Background
+    gradient = ctx.createRadialGradient(250, 250, 5, 250, 250, 300);
+    gradient.addColorStop(0, "#03303a");
+    gradient.addColorStop(1, "black");
+    ctx.fillStyle = gradient;
+    //ctx.fillStyle = 'rgba(00 ,00 , 00, 1)';
+    ctx.fillRect(0, 0, 500, 500);
+    //Hours
+    ctx.beginPath();
+    ctx.arc(250, 250, 200, degToRad(270), degToRad((hrs * 30) - 90));
+    ctx.stroke();
+    //Minutes
+    ctx.beginPath();
+    ctx.arc(250, 250, 170, degToRad(270), degToRad((smoothmin * 6) - 90));
+    ctx.stroke();
+    //Seconds
+    ctx.beginPath();
+    ctx.arc(250, 250, 140, degToRad(270), degToRad((smoothsec * 6) - 90));
+    ctx.stroke();
+    //Date
+    ctx.font = "25px Helvetica";
+    ctx.fillStyle = 'rgba(00, 255, 255, 1)'
+    ctx.fillText(today, 175, 250);
+    //Time
+    ctx.font = "25px Helvetica Bold";
+    ctx.fillStyle = 'rgba(00, 255, 255, 1)';
+    ctx.fillText(time + ":" + mil, 175, 280);
 
-// get unix time :
-function getCurrentUnixTimestamp() {
-    return Math.floor(Date.now() / 1000);
 }
-const first_unix = 1674678600; //  2023 / 1 / 26   00:00:00
-function GetPassedSec() {
-    return getCurrentUnixTimestamp() - first_unix;
-}
-function ConvertSecToDate() // its just a test function
-{
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    var month = Math.floor(day / 30);
-    var year = Math.floor(month / 12);
-    sec = sec - min * 60;
-    min = min - hour * 60;
-    hour = hour - day * 24;
-    day = day - month * 30;
-    month = month - year * 12;
-    return "years : " + year + " | months : " + month + " | days : " + day + " | hours : " + hour + " | minutes : " + min + " | seconds : " + sec;
-}
-
-
-
-function GetDate() {
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    var month = Math.floor(day / 30);
-    var year = Math.floor(month / 12);
-    day = day - month * 30;
-    month = month - year * 12;
-    if(year < 10){
-        year = "000" + year;
-    }
-    else if(year < 100){
-        year = "00" + year;
-    }
-    else if(year < 1000){
-        year = "0" + year;
-    }
-    if(month < 10){
-        month = "0" + month;
-    }
-    if(day < 10){
-        day = "0" + day;
-    } 
-    return year + "/" + month + "/" + day;
-}
-function GetYear(){
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    var month = Math.floor(day / 30);
-    var year = Math.floor(month / 12);
-    day = day - month * 30;
-    month = month - year * 12;
-    if(year < 10){
-        year = "000" + year;
-    }
-    else if(year < 100){
-        year = "00" + year;
-    }
-    else if(year < 1000){
-        year = "0" + year;
-    }
-    return year;
-}
-function GetMonth(){
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    var month = Math.floor(day / 30);
-    var year = Math.floor(month / 12);
-    day = day - month * 30;
-    month = month - year * 12;
-    if(month < 10){
-        month = "0" + month;
-    }
-    return month;
-}
-function GetDay(){
-    var sec = GetPassedSec();
-    var min = Math.floor(sec / 60);
-    var hour = Math.floor(min / 60);
-    var day = Math.floor(hour / 24);
-    var month = Math.floor(day / 30);
-    var year = Math.floor(month / 12);
-    day = day - month * 30;
-    month = month - year * 12;
-    if(year < 10){
-        year = "000" + year;
-    }
-    else if(year < 100){
-        year = "00" + year;
-    }
-    else if(year < 1000){
-        year = "0" + year;
-    }
-    if(month < 10){
-        month = "0" + month;
-    }
-    if(day < 10){
-        day = "0" + day;
-    } 
-    return day;
-}
-    function draw() {
-        for (i = 0; i < 60; i++) {
-            D = (i < 10) ? '0' + i : i;
-            $('#s').append('<li data-item=' + D + '>' + D + '</li>');
-        }
-        for (i = 0; i < 60; i++) {
-            D = (i < 10) ? '0' + i : i;
-            $('#m').append('<li data-item=' + D + '>' + D + '</li>');
-        }
-        for (i = 0; i < 24; i++) {
-            D = (i < 10) ? '0' + i : i;
-            $('#h').append('<li data-item=' + D + '>' + D + '</li>');
-        }
-    }
-    function place() {
-        hdeg = 15;
-        msdeg = 6;
-        $('#s li').each(function (index) {
-            $(this).css({ transform: 'rotateZ(' + msdeg * index + 'deg) translateX(' + parseInt(200) + 'px)' });
-        });
-        $('#m li').each(function (index) {
-            $(this).css({ transform: 'rotateZ(' + msdeg * index + 'deg) translateX(' + parseInt(170) + 'px)' });
-        });
-        $('#h li').each(function (index) {
-            $(this).css({ transform: 'rotateZ(' + hdeg * index + 'deg) translateX(' + parseInt(140) + 'px)' });
-        });
-    }
-    //TIMER
-    function sec(ts, timer) {
-        TS = ts % 60;
-        if (ts == 0 && timer) min(0, timer);
-        deg = 360 / 60 * ts;
-        $('#s li').removeClass('active');
-        $('#s li').eq(TS).addClass('active');
-        $('#s').css({ transform: 'rotateZ(-' + deg + 'deg)' });
-        ts++;
-        if (timer) setTimeout(function () { sec(ts, timer) }, TIME * 1000);
-    }
-    function min(tm, timer) {
-        TM = tm % 60;
-        if (tm == 0 && timer) hour(0, timer);
-        deg = 360 / 60 * tm;
-        $('#m li').removeClass('active');
-        $('#m li').eq(TM).addClass('active');
-        $('#m').css({ transform: 'rotateZ(-' + deg + 'deg)' });
-        tm++;
-        if (timer) setTimeout(function () { min(tm, timer) }, TIME * 60000);
-    }
-    function hour(th, timer) {
-        TH = th % 24;
-        deg = 360 / 24 * th;
-        $('#h li').removeClass('active');
-        $('#h li').eq(TH).addClass('active');
-        $('#h').css({ transform: 'rotateZ(-' + deg + 'deg)' });
-        th++;
-        if (timer) setTimeout(function () { hour(th, timer) }, TIME * 3600000);
-    }
-    //CLOCK
-    function clock() {
-        d = new Date();
-        H = d.getHours();
-        M = d.getMinutes();
-        S = d.getSeconds();
-        hour(H, 0);
-        min(M, 0);
-        sec(S, 0);
-        setTimeout(function () { clock(); }, 1000);
-    }
-
-    $(document).ready(function () {
-        draw();
-        place();
-        //TIMER
-        /*
-        TIME = 1;
-        sec(0,1);
-        */
-        //CLOCK
-        clock();
-        //LIGHT
-        $("h1").click(function () {
-            $(this).toggleClass('off');
-        });
-    });
-function DateCounter(){
-    var year = GetYear();
-    var month = GetMonth();
-    var day = GetDay();
-
-    document.getElementById("day").textContent = day;
-    document.getElementById("month").textContent = month;
-    document.getElementById("year").textContent = year;
-}
+setInterval(renderTime, 40);
