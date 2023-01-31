@@ -1,10 +1,10 @@
 
-// var myVar = setInterval(function () {
-//     myTimer();
-// }, 1000);
-// function myTimer() {
-//     document.getElementById("date").innerText = GetDate();
-// }
+var myVar = setInterval(function () {
+    myTimer();
+}, 1000);
+function myTimer() {
+    DateCounter();
+}
 
 
 
@@ -205,5 +205,11 @@ function GetDay(){
         });
     });
 function DateCounter(){
+    var year = GetYear();
+    var month = GetMonth();
+    var day = GetDay();
 
+    document.getElementById("day").textContent = day;
+    document.getElementById("month").textContent = month;
+    document.getElementById("year").textContent = year;
 }
