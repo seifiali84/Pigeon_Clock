@@ -14,7 +14,9 @@ function degToRad(degree) {
 function renderTime() {
     var now = new Date();
     var today = now.toDateString();
+   // console.log(today); //Wed Feb 01 2023
     var time = now.toLocaleTimeString();
+   // console.log(time); //1:44:13 PM
     var hrs = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();
