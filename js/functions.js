@@ -6,6 +6,74 @@ ctx.lineWidth = 17;
 ctx.shadowBlur = 15;
 ctx.shadowColor = '#00ffff'
 
+function getCurrentUnixTimestamp() {
+    return Math.floor(Date.now() / 1000);
+}
+const first_unix = 1674678600; //  2023 / 1 / 26   00:00:00
+function GetPassedSec() {
+    return getCurrentUnixTimestamp() - first_unix;
+}
+function GetYear(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(year < 10){
+        year = "000" + year;
+    }
+    else if(year < 100){
+        year = "00" + year;
+    }
+    else if(year < 1000){
+        year = "0" + year;
+    }
+    return year;
+}
+function GetMonth(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(month < 10){
+        month = "0" + month;
+    }
+    return month;
+}
+function GetDay(){
+    var sec = GetPassedSec();
+    var min = Math.floor(sec / 60);
+    var hour = Math.floor(min / 60);
+    var day = Math.floor(hour / 24);
+    var month = Math.floor(day / 30);
+    var year = Math.floor(month / 12);
+    day = day - month * 30;
+    month = month - year * 12;
+    if(year < 10){
+        year = "000" + year;
+    }
+    else if(year < 100){
+        year = "00" + year;
+    }
+    else if(year < 1000){
+        year = "0" + year;
+    }
+    if(month < 10){
+        month = "0" + month;
+    }
+    if(day < 10){
+        day = "0" + day;
+    } 
+    return day;
+}
+
 function degToRad(degree) {
     var factor = Math.PI / 180;
     return degree * factor;
@@ -15,6 +83,7 @@ function renderTime() {
     var now = new Date();
     var today = now.toDateString();
    // console.log(today); //Wed Feb 01 2023
+   today = "PGN P" + GetMonth() + " " + GetDay() + " " + GetYear();
     var time = now.toLocaleTimeString();
    // console.log(time); //1:44:13 PM
     var hrs = now.getHours();
