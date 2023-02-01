@@ -1,3 +1,7 @@
+@font-face {
+	font-family: 'Kalame';
+	src: url('css/Fonts/iranfont kalameh.ttf');
+  }
 body {
 	background-color: black;
 }
@@ -12,8 +16,8 @@ body {
 	margin-left: 45px;
 	box-shadow: 0 0 15px 2px #00ffff;
 }
-
 #canvas {
 	position: absolute;
 	left: 60px;
+	font-family: 'Kalame';
 }

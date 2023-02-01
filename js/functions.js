@@ -113,11 +113,11 @@ function renderTime() {
     ctx.arc(250, 250, 140, degToRad(270), degToRad((smoothsec * 6) - 90));
     ctx.stroke();
     //Date
-    ctx.font = "25px Helvetica";
+    ctx.font = "25px Kalame";
     ctx.fillStyle = 'rgba(00, 255, 255, 1)'
     ctx.fillText(today, 175, 250);
     //Time
-    ctx.font = "25px Helvetica Bold";
+    ctx.font = "25px Kalame Bold";
     ctx.fillStyle = 'rgba(00, 255, 255, 1)';
     ctx.fillText(time + ":" + mil, 175, 280);
 
